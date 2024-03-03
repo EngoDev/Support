@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ntikwctfrtu8"]
+
+[ext_resource type="Script" path="res://scripts/support_recipe.gd" id="1_c7e3f"]
+[ext_resource type="FontFile" uid="uid://cj8rgwjm8uj0t" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="1_uh23v"]
+
+[node name="Support Creator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="support_recipe" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_uh23v")
+theme_override_font_sizes/font_size = 45
+allow_search = false
+text_overrun_behavior = 0
+max_columns = 10
+fixed_column_width = 50
+script = ExtResource("1_c7e3f")
