@@ -26,5 +26,7 @@ text = " 👂🏻(L)  💞(E)
  🗣️ ➕ 🗣️ 🟰 💯"
 
 [node name="Friend" parent="." instance=ExtResource("3_cqr0y")]
-position = Vector2(292, 99)
-max_sequence = 3
+position = Vector2(298, 171)
+scale = Vector2(0.8, 0.8)
+max_sequence = 5
+allow_complex_support = true

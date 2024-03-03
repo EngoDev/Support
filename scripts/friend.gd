@@ -20,7 +20,7 @@ var support_type_script = SupportType.new()
 func _ready():
 	var support_creator = get_parent().get_node("Support Creator").get_node("support_recipe")
 	support_creator.added_support.connect(handle_added_support)
-	request_text.text = support_type_script.array_to_text(generate_random_sequence())
+	request_text.text = "[center]" + support_type_script.array_to_text(generate_random_sequence())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +56,7 @@ func generate_valid_support_type(previous_support_type: int, max_options: int) -
 
 
 func handle_added_support(support_text: String):
-	if support_text == request_text.text:
-		request_text.text = support_type_script.array_to_text(generate_random_sequence())
+	var target_text = request_text.text.replace("[center]", "")
+	if support_text == target_text:
+		request_text.text = "[center]" + support_type_script.array_to_text(generate_random_sequence())
 		emit_signal("cleared_friend_request")
