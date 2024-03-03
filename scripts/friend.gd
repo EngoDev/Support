@@ -10,17 +10,20 @@ signal cleared_friend_request()
 @export var allow_complex_support = false
 
 @onready var request_text = $request_text
+
 @onready var sprite = $sprite
 @onready var support_recipe_script = load("res://scripts/support_recipe.gd").new()
 
 var rng = RandomNumberGenerator.new()
 var support_type_script = SupportType.new()
 
+const SUPPORT_TEXT_PREFIX = "[center][wave]"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var support_creator = get_parent().get_node("Support Creator").get_node("support_recipe")
 	support_creator.added_support.connect(handle_added_support)
-	request_text.text = "[center]" + support_type_script.array_to_text(generate_random_support_pattern())
+	request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,7 +78,7 @@ func check_recipe_validity(previous_support_type: int, support_type: int) -> boo
 
 
 func handle_added_support(support_text: String):
-	var target_text = request_text.text.replace("[center]", "")
+	var target_text = request_text.text.replace(SUPPORT_TEXT_PREFIX, "")
 	if support_text == target_text:
-		request_text.text = "[center]" + support_type_script.array_to_text(generate_random_support_pattern())
+		request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 		emit_signal("cleared_friend_request")
