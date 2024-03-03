@@ -1,6 +1,6 @@
 extends ItemList
 
-#@export var max_items: int  
+signal added_support(support)
 
 var recipes = [
 	Recipe.new(SupportType.TALKING, SupportType.CURIOSITY, SupportType.QUESTION),
@@ -13,7 +13,8 @@ var support_type_script = SupportType.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var friend = get_parent().get_parent().get_node("Friend")
+	friend.cleared_friend_request.connect(_handle_cleared_friend_request)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +44,9 @@ func _process(delta):
 	elif get_item_count() < max_columns:
 		add_item(support_type_script.support_type_to_text(pressed_support_type), null, false)
 
+
+	emit_signal("added_support", get_support_text_from_item_list())
+
 func combine_support(first_support_type: int, second_support_type: int) -> int:
 	for recipe in recipes:
 		if recipe.is_match(first_support_type, second_support_type):
@@ -64,3 +68,13 @@ func get_support_type_from_press() -> int:
 		return SupportType.TALKING
 	
 	return -1
+
+func get_support_text_from_item_list() -> String:
+	var text = ""
+	for i in get_item_count():
+		text += get_item_text(i)
+	
+	return text
+
+func _handle_cleared_friend_request():
+	clear()

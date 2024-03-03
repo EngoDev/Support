@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bota8htwc3brf"]
+
+[ext_resource type="Texture2D" uid="uid://clr6scvegsjwi" path="res://assets/textures/player.png" id="1_7ydkg"]
+[ext_resource type="Script" path="res://scripts/friend.gd" id="1_87sy0"]
+[ext_resource type="FontFile" uid="uid://cj8rgwjm8uj0t" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_1iubn"]
+
+[node name="Friend" type="Node2D"]
+script = ExtResource("1_87sy0")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(578.25, 372.571)
+scale = Vector2(6.92857, 6.92857)
+texture = ExtResource("1_7ydkg")
+
+[node name="request_text" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 350.0
+offset_top = 39.0
+offset_right = 819.0
+offset_bottom = 189.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_1iubn")
+theme_override_font_sizes/normal_font_size = 100
