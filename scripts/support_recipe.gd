@@ -2,13 +2,6 @@ extends ItemList
 
 signal added_support(support)
 
-var recipes = [
-	Recipe.new(SupportType.TALKING, SupportType.CURIOSITY, SupportType.QUESTION),
-	Recipe.new(SupportType.EMPATHY, SupportType.EMPATHY, SupportType.HUG),
-	Recipe.new(SupportType.TALKING, SupportType.LISTENING, SupportType.ADVICE),
-	Recipe.new(SupportType.TALKING, SupportType.TALKING, SupportType.FEEDBACK),
-]
-
 var support_type_script = SupportType.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +14,7 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_just_pressed("clear_support"):
-		clear()
+		remove_item(get_item_count() - 1)
 	
 	var last_support_type = -1
 	var last_item_index = -1
@@ -48,7 +41,7 @@ func _process(delta):
 	emit_signal("added_support", get_support_text_from_item_list())
 
 func combine_support(first_support_type: int, second_support_type: int) -> int:
-	for recipe in recipes:
+	for recipe in Global.recipes:
 		if recipe.is_match(first_support_type, second_support_type):
 			return recipe.result
 	

@@ -13,4 +13,6 @@ func _init(_first, _second, _result):
 	
 func is_match(_first, _second) -> bool:
 	return (first == _first and second == _second) or (first == _second and second == _first)
-	# return ingredients.find(first) != -1 and ingredients.find(second) != -1 
+
+func is_type_in_recipe(support_type: int) -> bool:
+	return (first == support_type or second == support_type)

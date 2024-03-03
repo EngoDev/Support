@@ -37,7 +37,7 @@ func generate_random_sequence() -> Array[int]:
 		max_options = support_type_script.COUNT
 	
 	sequence.append(rng.randi_range(0, max_options))
-	for i in range(sequence_len - 1):
+	for i in range(sequence_len):
 		sequence.append(generate_valid_support_type(sequence[-1], max_options))
 		
 	return sequence
@@ -49,11 +49,30 @@ func generate_valid_support_type(previous_support_type: int, max_options: int) -
 	
 	while combined != -1:
 		var support_type = rng.randi_range(0, max_options)
+
+		if not check_recipe_validity(previous_support_type, support_type):
+			continue
+		
 		combined = support_recipe_script.combine_support(previous_support_type, support_type)
 		valid_support_type = support_type
 
 	return valid_support_type
 
+func check_recipe_validity(previous_support_type: int, support_type: int) -> bool:
+	if support_type > support_type_script.LARGEST_BASIC_SUPPORT_INDEX:
+		for recipe in Global.recipes:
+			# Check if the previous support is not part of the recipe for the next support
+			if recipe.is_type_in_recipe(previous_support_type) and recipe.result == support_type:
+				return false
+			elif recipe.result == support_type:
+				# Check if the previous support can't produce the next support
+				if support_recipe_script.combine_support(previous_support_type, recipe.first) != -1 or support_recipe_script.combine_support(previous_support_type, recipe.second) != -1:
+					return false
+				
+
+					
+				
+	return true
 
 func handle_added_support(support_text: String):
 	var target_text = request_text.text.replace("[center]", "")
