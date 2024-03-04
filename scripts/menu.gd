@@ -20,7 +20,8 @@ func _on_levels_button_pressed():
 
 
 func _on_tutorial_button_pressed():
-	pass # Replace with function body.
+	chosen_menu = preload("res://scenes/tutorial.tscn")
+	animation_player.play("leave")
 
 
 func _on_about_button_pressed():

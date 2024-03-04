@@ -1,16 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl1oq7k6ifj41"]
+[gd_scene load_steps=3 format=3 uid="uid://bl1oq7k6ifj41"]
 
-[ext_resource type="Texture2D" uid="uid://dmki7ltih8n22" path="res://assets/textures/tutorial.png" id="1_wli2b"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_k0ymp"]
+[ext_resource type="Texture2D" uid="uid://bnjw71jvew1a" path="res://assets/textures/tutorial_new.png" id="1_vweyu"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -302.0
+offset_right = -540.0
+offset_bottom = -302.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k0ymp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1790.0
+offset_top = -811.0
+offset_right = 2996.0
+offset_bottom = 1617.0
+color = Color(0.0431373, 0.152941, 0.164706, 1)
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(574.308, 323.594)
-scale = Vector2(0.603019, 0.644369)
-texture = ExtResource("1_wli2b")
+position = Vector2(574.449, 286.002)
+scale = Vector2(0.547441, 0.58498)
+texture = ExtResource("1_vweyu")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 568.0
+offset_right = 645.0
+offset_bottom = 628.0
+bbcode_enabled = true
+text = "[center][color=orange][font_size=40]Level 1"
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 574.0
+offset_right = 198.0
+offset_bottom = 619.0
+text = "BACK
+"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

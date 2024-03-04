@@ -206,8 +206,8 @@ anchors_preset = 0
 script = ExtResource("1_7rar5")
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(-2, -27)
-scale = Vector2(3.34697, 3.34697)
+position = Vector2(49, -136)
+scale = Vector2(5.04865, 3.34697)
 texture = ExtResource("1_xbaag")
 
 [node name="Camera2D" type="Camera2D" parent="."]
