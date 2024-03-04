@@ -8,14 +8,16 @@ signal modified_happiness(happiness: int)
 @export var win_score: int
 @export var min_sequence = 1
 @export var max_sequence = 2
-@export var happiness = 100
+@export var happiness = 50
+@export var max_happiness = 100
 @export var remove_happiness_interval = 2
 @export var remove_happiness_amount = 5
 @export var increase_happiness_amount = 10
 @export var start_timer_sec = 60
 @export var allow_complex_support = false
 
-@onready var request_text = $TextureRect/request_text
+@onready var thought_bubble = $thought_bubble
+@onready var request_text = $thought_bubble/request_text
 @onready var emotion_timer = $emotion_timer
 @onready var remove_happiness_timer = $remove_happiness_timer
 
@@ -27,6 +29,8 @@ signal modified_happiness(happiness: int)
 
 var rng = RandomNumberGenerator.new()
 var support_type_script = SupportType.new()
+
+var emotes = []
 
 const SUPPORT_TEXT_PREFIX = "[center][wave]"
 
@@ -45,11 +49,14 @@ func spawn_emotion(position: Vector2):
 	bunny.set_emotion(bunny_emotion.pick_emotion(happiness))
 	bunny.position = position
 	add_child(bunny)
+	
+	emotes.append(bunny)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	happiness_bar.value = happiness
+	print(happiness)
 
 
 func generate_random_support_pattern() -> Array[int]:
@@ -109,9 +116,10 @@ func handle_added_support(support_text: String):
 
 func increase_happiness():
 	var new = happiness + increase_happiness_amount
-	if new > 100:
-		new = 100
+	if new > max_happiness:
+		new = max_happiness
 	
+	print("ASDASDASDA: " + str(new))
 	happiness = new	
 	
 func decrease_happiness():
@@ -119,7 +127,20 @@ func decrease_happiness():
 	if new < 0:
 		new = 0
 	
-	happiness = new	
+	#happiness = new	
+
+## Clear all elements in the scene except the sprite and stops the timers
+func clear_friend():
+	emotion_timer.stop()
+	remove_happiness_timer.stop()
+	
+	thought_bubble.queue_free()
+	happiness_bar.queue_free()
+	
+	for emote in emotes:
+		emote.queue_free()
+	
+	set_process(false)
 
 
 func _on_emotion_timer_timeout():

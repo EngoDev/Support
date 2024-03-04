@@ -1,3 +1,195 @@
-[gd_scene format=3 uid="uid://8bq5jqpu2uyl"]
+[gd_scene load_steps=5 format=3 uid="uid://8bq5jqpu2uyl"]
 
-[node name="Menu" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://40220lmfc65s" path="res://assets/textures/s4m_ur4i-bg_clouds.png" id="1_xbaag"]
+
+[sub_resource type="Animation" id="Animation_15srg"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../levels_button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2000, 20), Vector2(-132, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../tutorial_button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1600, 80), Vector2(-132, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../about_button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1200, 140), Vector2(-132, 140)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../credits_button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1000, 200), Vector2(-132, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../title:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[center][color=FFB302][font_size=100][i]Welcome To Support :)"]
+}
+
+[sub_resource type="Animation" id="Animation_1qtig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../levels_button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-132, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../tutorial_button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-132, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../about_button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-132, 140)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../credits_button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-132, 200)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../title:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[center][color=FFB302][font_size=100][i]Welcome To Support :)"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bokbq"]
+_data = {
+"RESET": SubResource("Animation_1qtig"),
+"enter": SubResource("Animation_15srg")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-2, -27)
+scale = Vector2(3.34697, 3.34697)
+texture = ExtResource("1_xbaag")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="levels_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -132.0
+offset_top = 20.0
+offset_right = 132.0
+offset_bottom = 65.0
+text = "LEVELS"
+
+[node name="tutorial_button" type="Button" parent="."]
+offset_left = -132.0
+offset_top = 80.0
+offset_right = 132.0
+offset_bottom = 125.0
+text = "TUTORIAL
+"
+
+[node name="about_button" type="Button" parent="."]
+offset_left = -132.0
+offset_top = 140.0
+offset_right = 132.0
+offset_bottom = 185.0
+text = "ABOUT
+"
+
+[node name="credits_button" type="Button" parent="."]
+offset_left = -132.0
+offset_top = 200.0
+offset_right = 132.0
+offset_bottom = 245.0
+text = "CREDITS
+"
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -333.0
+offset_top = -323.0
+offset_right = 335.0
+offset_bottom = -41.0
+bbcode_enabled = true
+text = "[center][color=FFB302][font_size=100][i]Welcome To Support :)"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../background")
+libraries = {
+"": SubResource("AnimationLibrary_bokbq")
+}
+autoplay = "enter"

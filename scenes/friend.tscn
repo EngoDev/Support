@@ -27,7 +27,7 @@ height = 32
 [node name="Friend" type="Node2D"]
 script = ExtResource("1_87sy0")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="thought_bubble" type="TextureRect" parent="."]
 offset_left = 67.0
 offset_top = -279.0
 offset_right = 324.0
@@ -36,7 +36,7 @@ texture = ExtResource("2_ugbol")
 expand_mode = 2
 metadata/_edit_group_ = true
 
-[node name="request_text" type="RichTextLabel" parent="TextureRect"]
+[node name="request_text" type="RichTextLabel" parent="thought_bubble"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0350195
@@ -52,7 +52,7 @@ text = "[center][wave]💯"
 scroll_active = false
 script = ExtResource("3_du8u6")
 
-[node name="tail" type="Sprite2D" parent="TextureRect"]
+[node name="tail" type="Sprite2D" parent="thought_bubble"]
 position = Vector2(57, 142)
 scale = Vector2(0.999995, 1)
 texture = ExtResource("3_iqxbb")

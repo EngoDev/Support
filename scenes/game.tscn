@@ -37,6 +37,8 @@ text = " 👂🏻(L)  💞(E)
 position = Vector2(692, 443)
 scale = Vector2(0.8, 0.8)
 max_sequence = 3
-happiness = 50
+happiness = 90
 remove_happiness_interval = 8
 allow_complex_support = true
+
+[connection signal="modified_happiness" from="Friend" to="." method="_on_friend_modified_happiness"]
