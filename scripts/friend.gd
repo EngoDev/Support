@@ -9,7 +9,7 @@ signal cleared_friend_request()
 @export var start_timer_sec = 60
 @export var allow_complex_support = false
 
-@onready var request_text = $request_text
+@onready var request_text = $TextureRect/request_text
 
 @onready var sprite = $sprite
 @onready var support_recipe_script = load("res://scripts/support_recipe.gd").new()

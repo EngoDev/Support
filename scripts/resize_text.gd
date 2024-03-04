@@ -1,5 +1,6 @@
 extends RichTextLabel
 
+@onready var texture_rect = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,9 +9,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var rect_size = get_theme_font("normal_font").get_string_size(text)
-	
-	custom_minimum_size.x = rect_size.x
+	var rect_size = get_theme_font("normal_font").get_string_size(text) * 2
+	texture_rect.size.x = rect_size.x * 1.2
+	size.x = rect_size.x * 1.2
 	#control.layout.rect_size.x = rect_size.x
 	#transform.rect_size.x = rect_size.x
 	#object.rect_size = rect_size.x
