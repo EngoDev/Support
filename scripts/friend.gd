@@ -68,7 +68,7 @@ func generate_random_support_pattern() -> Array[int]:
 	var sequence_len = rng.randi_range(min_sequence, max_sequence)
 	
 	if allow_complex_support:
-		max_options = support_type_script.COUNT
+		max_options = support_type_script.COUNT - 1
 	
 	sequence.append(rng.randi_range(0, max_options))
 	for i in range(sequence_len):
@@ -84,7 +84,8 @@ func generate_valid_support_type(previous_support_type: int, max_options: int) -
 	
 	while combined != -1:
 		var support_type = rng.randi_range(0, max_options)
-
+		if support_type <= support_type_script.LARGEST_BASIC_SUPPORT_INDEX:
+			print("AAAA")
 		if not check_recipe_validity(previous_support_type, support_type):
 			continue
 		

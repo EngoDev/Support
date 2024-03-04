@@ -42,13 +42,21 @@ func is_negative(texture: Texture2D) -> bool:
 func pick_emotion(happiness: int) -> Texture2D:
 	var texture
 	if happiness < Global.SAD_LEVEL:
-		texture = negative_textures[rng.randi_range(0, len(negative_textures) - 1)]
+		texture = pick_random_negative()
 	elif happiness < Global.NEUTRAL_LEVEL:
 		texture = neutral_textures[rng.randi_range(0, len(neutral_textures) - 1)]
 	else:
-		texture = happy_textures[rng.randi_range(0, len(happy_textures) - 1)]
+		texture = pick_random_happy()
 	
 	return texture
+
+	
+func pick_random_negative() -> Texture2D:
+	return negative_textures[rng.randi_range(0, len(negative_textures) - 1)]
+
+
+func pick_random_happy() -> Texture2D:
+	return happy_textures[rng.randi_range(0, len(happy_textures) - 1)]
 
 #enum {
 	#HAPPY,

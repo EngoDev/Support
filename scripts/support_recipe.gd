@@ -18,7 +18,6 @@ func _process(delta):
 	
 	var last_support_type = -1
 	var last_item_index = -1
-	#var support_to_add
 
 	var pressed_support_type = get_support_type_from_press()
 
@@ -26,7 +25,7 @@ func _process(delta):
 		return
 		
 	if get_item_count() != 0:
-		last_item_index = get_item_count() - 1 # get_item_at_position(Vector2(get_item_count() - 1, 0))
+		last_item_index = get_item_count() - 1
 		last_support_type = support_type_script.text_to_support_type(get_item_text(last_item_index))
 		
 	var combined = combine_support(last_support_type, pressed_support_type)
@@ -36,7 +35,6 @@ func _process(delta):
 		add_item(support_type_script.support_type_to_text(combined), null, false)
 	elif get_item_count() < max_columns:
 		add_item(support_type_script.support_type_to_text(pressed_support_type), null, false)
-
 
 	emit_signal("added_support", get_support_text_from_item_list())
 

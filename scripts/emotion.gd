@@ -15,7 +15,6 @@ func _ready():
 	destroy_timer.start()
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not animation_player.is_playing():

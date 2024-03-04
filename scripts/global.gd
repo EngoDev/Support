@@ -1,5 +1,7 @@
 extends Node
 
+@onready var _bunny_emotion = preload("res://scripts/bunny_emotion.gd").new()
+
 const HAPPY_LEVEL = 90
 const NEUTRAL_LEVEL = 50
 const SAD_LEVEL = 30
@@ -28,6 +30,7 @@ func get_serialized_support_text() -> String:
 
 func reset_support():
 	_player_support = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
