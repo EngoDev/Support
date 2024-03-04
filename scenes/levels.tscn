@@ -19,7 +19,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("tutorial_button:position")
+tracks/1/path = NodePath("back_button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +70,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("tutorial_button:position")
+tracks/1/path = NodePath("back_button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -121,7 +121,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("tutorial_button:position")
+tracks/1/path = NodePath("back_button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -179,14 +179,13 @@ offset_right = 2264.0
 offset_bottom = 65.0
 text = "LEVEL 1"
 
-[node name="tutorial_button" type="Button" parent="."]
-visible = false
+[node name="back_button" type="Button" parent="."]
 layout_mode = 0
 offset_left = -132.0
 offset_top = 80.0
 offset_right = 132.0
 offset_bottom = 125.0
-text = "TUTORIAL
+text = "BACK
 "
 
 [node name="about_button" type="Button" parent="."]
@@ -216,4 +215,5 @@ libraries = {
 autoplay = "enter"
 
 [connection signal="pressed" from="level_1_button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

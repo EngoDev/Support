@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl1oq7k6ifj41"]
+
+[ext_resource type="Texture2D" uid="uid://dmki7ltih8n22" path="res://assets/textures/tutorial.png" id="1_wli2b"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(574.308, 323.594)
+scale = Vector2(0.603019, 0.644369)
+texture = ExtResource("1_wli2b")
