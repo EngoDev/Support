@@ -11,12 +11,13 @@
 script = ExtResource("1_87sy0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 544.0
-offset_top = 103.0
-offset_right = 801.0
-offset_bottom = 221.0
+offset_left = 67.0
+offset_top = -279.0
+offset_right = 324.0
+offset_bottom = -161.0
 texture = ExtResource("2_ugbol")
 expand_mode = 2
+metadata/_edit_group_ = true
 
 [node name="request_text" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 1
@@ -35,11 +36,11 @@ scroll_active = false
 script = ExtResource("3_du8u6")
 
 [node name="tail" type="Sprite2D" parent="TextureRect"]
-position = Vector2(267, 134)
+position = Vector2(57, 142)
 scale = Vector2(0.999995, 1)
 texture = ExtResource("3_iqxbb")
+flip_h = true
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(956, 382)
 scale = Vector2(6.92857, 6.92857)
 texture = ExtResource("1_7ydkg")

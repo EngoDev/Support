@@ -13,6 +13,7 @@ signal cleared_friend_request()
 
 @onready var sprite = $sprite
 @onready var support_recipe_script = load("res://scripts/support_recipe.gd").new()
+@onready var bunny_emotion = preload("res://scripts/bunny_emotion.gd").new()
 
 var rng = RandomNumberGenerator.new()
 var support_type_script = SupportType.new()
@@ -24,6 +25,13 @@ func _ready():
 	var support_creator = get_parent().get_node("Support Creator").get_node("support_recipe")
 	support_creator.added_support.connect(handle_added_support)
 	request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
+	
+	var bunny = preload("res://scenes/emotion.tscn").instantiate()
+	#bunny.instantiate()
+	bunny.set_emotion(bunny_emotion.BUNNY_ANGRY)
+	bunny.position.x = -50
+	bunny.position.y = -110
+	add_child(bunny)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

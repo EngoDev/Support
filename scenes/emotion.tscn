@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://vlq7c2bys0g2"]
+
+[ext_resource type="Script" path="res://scripts/emotion.gd" id="1_xiabt"]
+[ext_resource type="Texture2D" uid="uid://b6mn0ius8ldq8" path="res://assets/textures/bunny/bunny_depressed.png" id="2_07p6e"]
+[ext_resource type="Texture2D" uid="uid://drepe2ph6gsrr" path="res://assets/textures/bunny/bunny_happy.png" id="3_4wcs3"]
+
+[sub_resource type="Gradient" id="Gradient_8i4ve"]
+offsets = PackedFloat32Array(0, 0.773333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.632685, 0.632686, 0, 1, 0.854902, 0.854902, 0, 1)
+
+[sub_resource type="Animation" id="Animation_2yfxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bunny:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.42, 0.42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bunny:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bunny:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_klo6t"]
+resource_name = "enter_excited"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bunny:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.42, 0.42)]
+}
+
+[sub_resource type="Animation" id="Animation_6nc1g"]
+resource_name = "angry"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bunny:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533, 1.49012e-08]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bunny:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.42, 0.42), Vector2(0.42, 0.42)]
+}
+
+[sub_resource type="Animation" id="Animation_ew8r7"]
+resource_name = "happy"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bunny:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, -5), Vector2(0, 0), Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bunny:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.42, 0.42), Vector2(0.42, 0.42)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wenek"]
+_data = {
+"RESET": SubResource("Animation_2yfxk"),
+"angry": SubResource("Animation_6nc1g"),
+"enter": SubResource("Animation_klo6t"),
+"happy": SubResource("Animation_ew8r7")
+}
+
+[node name="Emotion" type="Control" node_paths=PackedStringArray("bunny", "negative_particles", "happy_particles", "animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xiabt")
+bunny = NodePath("bunny")
+negative_particles = NodePath("negative_emotion_particle")
+happy_particles = NodePath("happy_emotion_particle")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="negative_emotion_particle" type="CPUParticles2D" parent="."]
+process_mode = 1
+visible = false
+texture = ExtResource("2_07p6e")
+emission_shape = 1
+emission_sphere_radius = 84.82
+gravity = Vector2(0, -50)
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+
+[node name="happy_emotion_particle" type="CPUParticles2D" parent="."]
+process_mode = 1
+visible = false
+lifetime = 2.0
+texture = ExtResource("3_4wcs3")
+emission_shape = 1
+emission_sphere_radius = 21.05
+gravity = Vector2(0, -20)
+linear_accel_min = 25.0
+linear_accel_max = 25.0
+tangential_accel_min = 45.79
+tangential_accel_max = 45.79
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_8i4ve")
+
+[node name="bunny" type="Sprite2D" parent="."]
+position = Vector2(-2.99994, -6.99997)
+rotation = -0.174533
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("3_4wcs3")
+region_rect = Rect2(3, 3, 276, 203)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wenek")
+}
+autoplay = "enter"
