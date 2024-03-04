@@ -79,7 +79,7 @@ anchor_bottom = 0.5
 offset_left = -5.0
 offset_top = -300.0
 offset_right = 1173.0
-offset_bottom = -94.9989
+offset_bottom = -94.999
 grow_vertical = 2
 bbcode_enabled = true
 text = "[center][wave freq=15][color=red][font_size=15f0]GAME OVER"
@@ -99,6 +99,14 @@ offset_top = 330.0
 offset_right = 264.0
 offset_bottom = 375.0
 text = "MENU"
+
+[node name="thank_you_text" type="RichTextLabel" parent="."]
+offset_top = 614.0
+offset_right = 339.0
+offset_bottom = 647.0
+bbcode_enabled = true
+text = "[center][color=yellow][font_size=20
+]Thank you for playing my game[color=red] ❤️"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="menu_button" to="." method="_on_menu_button_pressed"]

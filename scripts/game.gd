@@ -21,6 +21,8 @@ func spawn_success_screen():
 
 func spawn_game_over_screen():
 	var game_over = preload("res://scenes/game_over.tscn").instantiate()
+	game_over.should_use_negative_emotes = true
+	
 	add_child(game_over)
 
 func _on_friend_modified_happiness(happiness):

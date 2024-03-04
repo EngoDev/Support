@@ -58,18 +58,17 @@ text = " 👂🏻(L)  💞(E)
 position = Vector2(579, 452)
 scale = Vector2(0.8, 0.8)
 max_sequence = 5
-happiness = 90
+happiness = 5
 remove_happiness_interval = 10
 remove_happiness_amount = 4
-increase_happiness_amount = 5
 allow_complex_support = true
 
 [node name="start_text" type="RichTextLabel" parent="."]
 process_mode = 3
 offset_left = 279.0
-offset_top = 110.0
+offset_top = 142.0
 offset_right = 1045.0
-offset_bottom = 218.0
+offset_bottom = 250.0
 bbcode_enabled = true
 text = "[center][color=#FF5733][bgcolor=708090][font_size=60][pulse]PRESS SPACE TO START"
 script = ExtResource("6_nhg2i")
