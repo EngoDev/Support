@@ -2,16 +2,26 @@ extends Node2D
 
 ## Emits when the player's support pattern matches the friend pattern
 signal cleared_friend_request()
+## Emits when the happiness of the friend has been modified
+signal modified_happiness(happiness: int)
 
 @export var win_score: int
 @export var min_sequence = 1
 @export var max_sequence = 2
+@export var happiness = 100
+@export var remove_happiness_interval = 2
+@export var remove_happiness_amount = 5
+@export var increase_happiness_amount = 10
 @export var start_timer_sec = 60
 @export var allow_complex_support = false
 
 @onready var request_text = $TextureRect/request_text
+@onready var emotion_timer = $emotion_timer
+@onready var remove_happiness_timer = $remove_happiness_timer
 
 @onready var sprite = $sprite
+@onready var happiness_bar = $happiness_bar
+
 @onready var support_recipe_script = load("res://scripts/support_recipe.gd").new()
 @onready var bunny_emotion = preload("res://scripts/bunny_emotion.gd").new()
 
@@ -22,21 +32,24 @@ const SUPPORT_TEXT_PREFIX = "[center][wave]"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	emotion_timer.start()
+	remove_happiness_timer.start(remove_happiness_interval)
+	
 	var support_creator = get_parent().get_node("Support Creator").get_node("support_recipe")
 	support_creator.added_support.connect(handle_added_support)
 	request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 	
+
+func spawn_emotion(position: Vector2):
 	var bunny = preload("res://scenes/emotion.tscn").instantiate()
-	#bunny.instantiate()
-	bunny.set_emotion(bunny_emotion.BUNNY_ANGRY)
-	bunny.position.x = -50
-	bunny.position.y = -110
+	bunny.set_emotion(bunny_emotion.pick_emotion(happiness))
+	bunny.position = position
 	add_child(bunny)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	happiness_bar.value = happiness
 
 
 func generate_random_support_pattern() -> Array[int]:
@@ -89,4 +102,18 @@ func handle_added_support(support_text: String):
 	var target_text = request_text.text.replace(SUPPORT_TEXT_PREFIX, "")
 	if support_text == target_text:
 		request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
+		happiness += increase_happiness_amount
+		
 		emit_signal("cleared_friend_request")
+		emit_signal("modified_happiness", happiness)
+
+
+func _on_emotion_timer_timeout():
+	var x = rng.randi_range(-50, 20)
+	var y = rng.randi_range(-110, 90)
+	spawn_emotion(Vector2(x, y))
+
+
+func _on_remove_happiness_timer_timeout():
+	happiness -= remove_happiness_amount
+	emit_signal("modified_happiness", happiness)

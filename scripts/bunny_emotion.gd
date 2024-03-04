@@ -27,17 +27,28 @@ const BUNNY_TONGUE = preload("res://assets/textures/bunny/bunny_tongue.png")
 const BUNNY_WHISTLE = preload("res://assets/textures/bunny/bunny_whistle.png")
 const BUNNY_YES = preload("res://assets/textures/bunny/bunny_yes.png")
 
+const happy_textures = [BUNNY_HAPPY, BUNNY_CONTENT, BUNNY_STAR, BUNNY_YES]
+const negative_textures = [BUNNY_SAD, BUNNY_SAD_2, BUNNY_SCARED, BUNNY_DEPRESSED, BUNNY_DISSAPOINTED, BUNNY_SCARED, BUNNY_HELP]
+const neutral_textures = [BUNNY_QUESTION, BUNNY_APATHETIC, BUNNY_SLEEP, BUNNY_WHISTLE, BUNNY_SAS]
+
+var rng = RandomNumberGenerator.new()
+
 func is_happy(texture: Texture2D) -> bool:
-	match texture:
-		BUNNY_HAPPY, BUNNY_CONTENT, BUNNY_STAR, BUNNY_YES:
-			return true
-	return false
+	return texture in happy_textures
 	
 func is_negative(texture: Texture2D) -> bool:
-	match texture:
-		BUNNY_ANGRY, BUNNY_ANNOYED, BUNNY_CANT_EVEN, BUNNY_DEATH, BUNNY_DEPRESSED, BUNNY_NO, BUNNY_SAD:
-			return true
-	return false
+	return texture in negative_textures
+
+func pick_emotion(happiness: int) -> Texture2D:
+	var texture
+	if happiness < Global.SAD_LEVEL:
+		texture = negative_textures[rng.randi_range(0, len(negative_textures) - 1)]
+	elif happiness < Global.NEUTRAL_LEVEL:
+		texture = neutral_textures[rng.randi_range(0, len(neutral_textures) - 1)]
+	else:
+		texture = happy_textures[rng.randi_range(0, len(happy_textures) - 1)]
+	
+	return texture
 
 #enum {
 	#HAPPY,

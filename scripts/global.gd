@@ -1,5 +1,9 @@
 extends Node
 
+const HAPPY_LEVEL = 80
+const NEUTRAL_LEVEL = 50
+const SAD_LEVEL = 30
+
 var _support_type_script = SupportType.new()
 
 

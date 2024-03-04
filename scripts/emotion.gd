@@ -6,13 +6,14 @@ extends Control
 @export var happy_particles: Node
 @export var animation_player = Node
 
-#@onready var animation_player = $AnimationPlayer
+@onready var destroy_timer = $destroy_timer
 
 var bunny_emotion = Emotion.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	destroy_timer.start()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,10 +39,10 @@ func set_emotion(texture):
 	if bunny_emotion.is_happy(texture):
 		happy_particles.set_process(true)
 		happy_particles.visible = true
-		#animation_player.play("happy")
 	elif bunny_emotion.is_negative(texture):
 		negative_particles.set_process(true)
 		negative_particles.visible = true
-		#animation_player.play("angry")
 
-	#bunny.texture = texture
+
+func _on_destroy_timer_timeout():
+	queue_free()

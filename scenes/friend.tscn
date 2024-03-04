@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bota8htwc3brf"]
+[gd_scene load_steps=11 format=3 uid="uid://bota8htwc3brf"]
 
 [ext_resource type="Texture2D" uid="uid://clr6scvegsjwi" path="res://assets/textures/player.png" id="1_7ydkg"]
 [ext_resource type="Script" path="res://scripts/friend.gd" id="1_87sy0"]
@@ -6,6 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://dt4j2ko2jj05t" path="res://assets/textures/thought_bubble.png" id="2_ugbol"]
 [ext_resource type="Script" path="res://scripts/resize_text.gd" id="3_du8u6"]
 [ext_resource type="Texture2D" uid="uid://su1c1mvhqr2e" path="res://assets/textures/bubble_tail.png" id="3_iqxbb"]
+
+[sub_resource type="Gradient" id="Gradient_ss44n"]
+colors = PackedColorArray(0.411765, 0.411765, 0.411765, 1, 0.588235, 0.588235, 0.588235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wuepx"]
+gradient = SubResource("Gradient_ss44n")
+width = 352
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_r7tyl"]
+offsets = PackedFloat32Array(0, 0.302817, 0.598592, 0.873239)
+colors = PackedColorArray(0.870588, 0, 0, 1, 1, 1, 0, 1, 0.270588, 0.94902, 0.827451, 1, 0.223529, 0.898039, 0.235294, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ec4k6"]
+gradient = SubResource("Gradient_r7tyl")
+width = 352
+height = 32
 
 [node name="Friend" type="Node2D"]
 script = ExtResource("1_87sy0")
@@ -44,3 +61,21 @@ flip_h = true
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(6.92857, 6.92857)
 texture = ExtResource("1_7ydkg")
+
+[node name="emotion_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="remove_happiness_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="happiness_bar" type="TextureProgressBar" parent="."]
+offset_left = -176.0
+offset_top = 176.0
+offset_right = 176.0
+offset_bottom = 208.0
+texture_under = SubResource("GradientTexture2D_wuepx")
+texture_progress = SubResource("GradientTexture2D_ec4k6")
+
+[connection signal="timeout" from="emotion_timer" to="." method="_on_emotion_timer_timeout"]
+[connection signal="timeout" from="remove_happiness_timer" to="." method="_on_remove_happiness_timer_timeout"]
