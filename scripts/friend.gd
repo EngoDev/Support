@@ -102,10 +102,24 @@ func handle_added_support(support_text: String):
 	var target_text = request_text.text.replace(SUPPORT_TEXT_PREFIX, "")
 	if support_text == target_text:
 		request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
-		happiness += increase_happiness_amount
+		increase_happiness()
 		
 		emit_signal("cleared_friend_request")
 		emit_signal("modified_happiness", happiness)
+
+func increase_happiness():
+	var new = happiness + increase_happiness_amount
+	if new > 100:
+		new = 100
+	
+	happiness = new	
+	
+func decrease_happiness():
+	var new = happiness - remove_happiness_amount
+	if new < 0:
+		new = 0
+	
+	happiness = new	
 
 
 func _on_emotion_timer_timeout():
@@ -115,5 +129,5 @@ func _on_emotion_timer_timeout():
 
 
 func _on_remove_happiness_timer_timeout():
-	happiness -= remove_happiness_amount
+	decrease_happiness()
 	emit_signal("modified_happiness", happiness)

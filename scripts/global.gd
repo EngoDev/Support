@@ -1,6 +1,6 @@
 extends Node
 
-const HAPPY_LEVEL = 80
+const HAPPY_LEVEL = 90
 const NEUTRAL_LEVEL = 50
 const SAD_LEVEL = 30
 
