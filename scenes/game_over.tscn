@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5ofmo5ybbdu7"]
+[gd_scene load_steps=5 format=3 uid="uid://cjff4gx7boddl"]
 
-[ext_resource type="Script" path="res://scripts/finished_game.gd" id="1_qdl6v"]
+[ext_resource type="Script" path="res://scripts/finished_game.gd" id="1_jtrcg"]
 
 [sub_resource type="Animation" id="Animation_soasq"]
 length = 0.001
@@ -62,16 +62,16 @@ _data = {
 "enter": SubResource("Animation_qr8wg")
 }
 
-[node name="Finished Game" type="Control"]
+[node name="Game Over" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qdl6v")
+script = ExtResource("1_jtrcg")
 
-[node name="success_text" type="RichTextLabel" parent="."]
+[node name="failed_text" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -79,15 +79,15 @@ anchor_bottom = 0.5
 offset_left = -5.0
 offset_top = -300.0
 offset_right = 1173.0
-offset_bottom = -94.9995
+offset_bottom = -94.9996
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center][wave freq=15][color=pink][font_size=15f0]THANK YOU!"
+text = "[center][wave freq=15][color=red][font_size=15f0]GAME OVER"
 fit_content = true
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../success_text")
+root_node = NodePath("../failed_text")
 libraries = {
 "": SubResource("AnimationLibrary_1yhco")
 }

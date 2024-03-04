@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,13 +19,18 @@ func spawn_success_screen():
 	var finished_game = preload("res://scenes/finished_game.tscn").instantiate()
 	add_child(finished_game)
 
+func spawn_game_over_screen():
+	var game_over = preload("res://scenes/game_over.tscn").instantiate()
+	add_child(game_over)
 
 func _on_friend_modified_happiness(happiness):
-	if happiness == friend.max_happiness:
+	if happiness == friend.max_happiness or happiness == 0:
 		friend.clear_friend()
 		support_creator.queue_free()
 		legend.queue_free()
-		
-		spawn_success_screen()
-		# support_creator.queue_free()
-		
+	
+	match happiness:
+		friend.max_happiness:
+			spawn_success_screen()
+		0:
+			spawn_game_over_screen()

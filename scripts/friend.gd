@@ -41,7 +41,6 @@ func _ready():
 	
 	var support_creator = get_parent().get_node("Support Creator").get_node("support_recipe")
 	support_creator.added_support.connect(handle_added_support)
-	request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 	
 
 func spawn_emotion(position: Vector2):
@@ -55,6 +54,10 @@ func spawn_emotion(position: Vector2):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# If we set the text in _ready then it will show when the level is paused at the beginning
+	# which is undesirable
+	if request_text.text == "":
+		request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 	happiness_bar.value = happiness
 	print(happiness)
 
@@ -119,7 +122,6 @@ func increase_happiness():
 	if new > max_happiness:
 		new = max_happiness
 	
-	print("ASDASDASDA: " + str(new))
 	happiness = new	
 	
 func decrease_happiness():
@@ -127,7 +129,7 @@ func decrease_happiness():
 	if new < 0:
 		new = 0
 	
-	#happiness = new	
+	happiness = new	
 
 ## Clear all elements in the scene except the sprite and stops the timers
 func clear_friend():
@@ -138,7 +140,8 @@ func clear_friend():
 	happiness_bar.queue_free()
 	
 	for emote in emotes:
-		emote.queue_free()
+		if emote != null:
+			emote.queue_free()
 	
 	set_process(false)
 
