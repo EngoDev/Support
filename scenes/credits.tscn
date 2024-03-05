@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwyjlv21onei"]
+
+[ext_resource type="Script" path="res://scripts/go_back.gd" id="1_2wywq"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -572.0
+offset_top = -321.0
+offset_right = -572.0
+offset_bottom = -321.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wywq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1790.0
+offset_top = -811.0
+offset_right = 2996.0
+offset_bottom = 1617.0
+color = Color(0.0431373, 0.152941, 0.164706, 1)
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 508.0
+offset_right = 653.0
+offset_bottom = 60.0
+bbcode_enabled = true
+text = "[center][color=4fa9b3][font_size=40]Credits"
+
+[node name="text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 89.0
+offset_right = 1139.0
+offset_bottom = 648.0
+bbcode_enabled = true
+text = "[center][font_size=30][color=gold]Graphics:[/color]
+[color=green]Menu background:[/color] [url]https://s4m-ur4i.itch.io/pixelart-clouds-background[/url]
+[color=green]Game background:[/color] [url]https://lornn.itch.io/backgrounds-mountains-and-snow[/url]
+[color=yellow]Bunny emotes:[/color] [url]https://mewki.itch.io/bunny-emotes[/url]
+
+[color=red]Guides:[/color]
+[color=purple]Great Godot tutorial by JackieCodes:[/color] [url]https://www.youtube.com/watch?v=zykycPXopm4&list=PLflAYKtRJ7dx2wWsZniVvogu_1YgO6fjN&index=1[/url]
+
+[color=cyan]Pretty good documentation:[/color]  [url]https://docs.godotengine.org/en/stable/index.html[/url]"
+fit_content = true
+scroll_active = false
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 586.0
+offset_right = 284.0
+offset_bottom = 631.0
+text = "BACK"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

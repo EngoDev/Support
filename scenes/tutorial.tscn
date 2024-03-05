@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl1oq7k6ifj41"]
 
-[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_k0ymp"]
+[ext_resource type="Script" path="res://scripts/go_back.gd" id="1_cppvv"]
 [ext_resource type="Texture2D" uid="uid://bnjw71jvew1a" path="res://assets/textures/tutorial_new.png" id="1_vweyu"]
 
 [node name="Tutorial" type="Control"]
@@ -14,7 +14,7 @@ offset_right = -540.0
 offset_bottom = -302.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k0ymp")
+script = ExtResource("1_cppvv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -31,9 +31,9 @@ texture = ExtResource("1_vweyu")
 
 [node name="title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 500.0
+offset_left = 438.0
 offset_top = 568.0
-offset_right = 645.0
+offset_right = 583.0
 offset_bottom = 628.0
 bbcode_enabled = true
 text = "[center][color=orange][font_size=40]Level 1"

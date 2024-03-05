@@ -25,11 +25,13 @@ func _on_tutorial_button_pressed():
 
 
 func _on_about_button_pressed():
-	pass # Replace with function body.
+	chosen_menu = preload("res://scenes/about.tscn")
+	animation_player.play("leave")
 
 
 func _on_credits_button_pressed():
-	pass # Replace with function body.
+	chosen_menu = preload("res://scenes/credits.tscn")
+	animation_player.play("leave")
 
 
 func _on_animation_player_animation_finished(anim_name):

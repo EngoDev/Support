@@ -4,7 +4,10 @@ extends Node2D
 @onready var friend = $Friend
 @onready var support_creator = $"Support Creator"
 @onready var legend = $Legend
+@onready var time_text = $time_text
 
+var time_elapsed = 0.0
+var is_stopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +16,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if not is_stopped:
+		time_elapsed += delta
+		time_text.text = "[center][font_size=100]" + str(time_elapsed).pad_decimals(2)
 
 func spawn_success_screen():
 	var finished_game = preload("res://scenes/finished_game.tscn").instantiate()
@@ -27,6 +32,7 @@ func spawn_game_over_screen():
 
 func _on_friend_modified_happiness(happiness):
 	if happiness == friend.max_happiness or happiness == 0:
+		is_stopped = true
 		friend.clear_friend()
 		support_creator.queue_free()
 		legend.queue_free()
@@ -35,4 +41,4 @@ func _on_friend_modified_happiness(happiness):
 		friend.max_happiness:
 			spawn_success_screen()
 		0:
-			spawn_game_over_screen()
+			spawn_game_over_screen() 
