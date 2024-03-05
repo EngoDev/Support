@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl1oq7k6ifj41"]
 
 [ext_resource type="Script" path="res://scripts/go_back.gd" id="1_cppvv"]
-[ext_resource type="Texture2D" uid="uid://bnjw71jvew1a" path="res://assets/textures/tutorial_new.png" id="1_vweyu"]
+[ext_resource type="Texture2D" uid="uid://b2fsnnimuxk38" path="res://assets/textures/tutorial_new_2.png" id="2_h57ge"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -27,7 +27,7 @@ color = Color(0.0431373, 0.152941, 0.164706, 1)
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(574.449, 286.002)
 scale = Vector2(0.547441, 0.58498)
-texture = ExtResource("1_vweyu")
+texture = ExtResource("2_h57ge")
 
 [node name="title" type="RichTextLabel" parent="."]
 layout_mode = 0

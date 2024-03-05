@@ -39,21 +39,6 @@ text = " [font_size=30]
  💞 ➕ 💞 🟰 🫂
  🗣️ ➕ 🗣️ 🟰 💯"
 
-[node name="Legenda" type="Label" parent="."]
-visible = false
-offset_left = 1.0
-offset_top = 477.0
-offset_right = 201.0
-offset_bottom = 630.0
-theme_override_fonts/font = ExtResource("4_gjwej")
-text = " 👂🏻(L)  💞(E)
- 🦝(C)  🗣️(T)
-
- 🗣️ ➕ 🦝 🟰 ❓
- 👂🏻 ➕ 🗣️ 🟰 🗨️
- 💞 ➕ 💞 🟰 🫂
- 🗣️ ➕ 🗣️ 🟰 💯"
-
 [node name="Friend" parent="." instance=ExtResource("5_apqod")]
 position = Vector2(579, 452)
 scale = Vector2(0.8, 0.8)
