@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjff4gx7boddl"]
+[gd_scene load_steps=6 format=3 uid="uid://cjff4gx7boddl"]
 
 [ext_resource type="Script" path="res://scripts/finished_game.gd" id="1_jtrcg"]
+[ext_resource type="FontFile" uid="uid://cj8rgwjm8uj0t" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_ssv40"]
 
 [sub_resource type="Animation" id="Animation_soasq"]
 length = 0.001
@@ -101,12 +102,14 @@ offset_bottom = 375.0
 text = "MENU"
 
 [node name="thank_you_text" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_top = 614.0
-offset_right = 339.0
+offset_right = 357.0
 offset_bottom = 647.0
+theme_override_fonts/bold_font = ExtResource("2_ssv40")
 bbcode_enabled = true
 text = "[center][color=yellow][font_size=20
-]Thank you for playing my game[color=red] ❤️"
+]Thank you for playing my game[color=red] [b]❤️[/b]"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="menu_button" to="." method="_on_menu_button_pressed"]

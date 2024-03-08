@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj024b4weoka3"]
+[gd_scene load_steps=3 format=3 uid="uid://bj024b4weoka3"]
 
+[ext_resource type="FontFile" uid="uid://cj8rgwjm8uj0t" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_i8uhc"]
 [ext_resource type="Script" path="res://scripts/go_back.gd" id="2_u23gw"]
 
 [node name="About" type="Control"]
@@ -16,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("2_u23gw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -1790.0
 offset_top = -811.0
 offset_right = 2996.0
@@ -23,8 +25,9 @@ offset_bottom = 1617.0
 color = Color(0.0431373, 0.152941, 0.164706, 1)
 
 [node name="title" type="RichTextLabel" parent="."]
-offset_left = 508.0
-offset_right = 653.0
+layout_mode = 0
+offset_left = 506.0
+offset_right = 651.0
 offset_bottom = 60.0
 bbcode_enabled = true
 text = "[center][color=4fa9b3][font_size=40]About"
@@ -32,14 +35,15 @@ text = "[center][color=4fa9b3][font_size=40]About"
 [node name="text" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 15.0
-offset_top = 89.0
+offset_top = 61.0
 offset_right = 1139.0
-offset_bottom = 648.0
+offset_bottom = 620.0
+theme_override_fonts/bold_font = ExtResource("2_i8uhc")
 bbcode_enabled = true
-text = "[center][font_size=20]Hi! nice to meet you, my name is Engo and I'm an aspiring game developer.
+text = "[center][font_size=18]Hi! nice to meet you, my name is Engo and I'm an aspiring game developer.
 I wanted to try out Godot so I gave myself a challenge to learn it and make a silly little game as fast as possible and this is the game you (hopefully) just played. Overall it took me around 24 hours to finish it, I know it's not a lot and not very gamey but it was mostly a learning game and I'm pretty happy with the results (Although polishing is needed)
 
-One of my favorite things in the whole world is listening to people and supporting them in anyway that I can so I tried to make a game centered around that, I hope that I managed to pass these feelings through my game to you 😊
+One of my favorite things in the whole world is listening to people and supporting them in anyway that I can so I tried to make a game centered around that, I hope that I managed to pass these feelings through my game to you [b]😊[/b]
 
 In my spare time I teach kids Software Development and Cyber Security as another passion of mine, if you need guidance/help with your game or software development in general no matter what is your skill level feel free to send me a message on twitter [url=https://twitter.com/EngoDev]@EngoDev[/url] I would love to help out :)
 
@@ -47,16 +51,16 @@ If you have any feedback on my game it's very appreciated, you can either post a
 
 Source code can be found here: [url]https://github.com/EngoDev/Support[/url]
 
-And once again, thank you for playing my game, it truly means a lot to me [color=red]❤️[/color]"
+And once again, thank you for playing my game, it truly means a lot to me [color=red][b]❤️[/b][/color]"
 fit_content = true
 scroll_active = false
 
 [node name="back_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 593.0
-offset_right = 177.0
-offset_bottom = 638.0
+offset_left = 20.0
+offset_top = 575.0
+offset_right = 284.0
+offset_bottom = 620.0
 text = "BACK"
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

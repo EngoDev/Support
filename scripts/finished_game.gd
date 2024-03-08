@@ -28,7 +28,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(DisplayServer.screen_get_size())
+	pass
 
 func spawn_emotion(position: Vector2):
 	var bunny = preload("res://scenes/emotion.tscn").instantiate()

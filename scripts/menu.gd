@@ -4,6 +4,11 @@ extends Control
 
 var chosen_menu
 
+const EMOTE_SPAWN_LEFT_X_OFFSET = -600
+const EMOTE_SPAWN_RIGHT_X_OFFSET = -100
+const EMOTE_SPAWN_Y_OFFSET = 1000
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

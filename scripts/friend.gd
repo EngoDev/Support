@@ -59,7 +59,6 @@ func _process(delta):
 	if request_text.text == "":
 		request_text.text = SUPPORT_TEXT_PREFIX + support_type_script.array_to_text(generate_random_support_pattern())
 	happiness_bar.value = happiness
-	print(happiness)
 
 
 func generate_random_support_pattern() -> Array[int]:
@@ -84,8 +83,6 @@ func generate_valid_support_type(previous_support_type: int, max_options: int) -
 	
 	while combined != -1:
 		var support_type = rng.randi_range(0, max_options)
-		if support_type <= support_type_script.LARGEST_BASIC_SUPPORT_INDEX:
-			print("AAAA")
 		if not check_recipe_validity(previous_support_type, support_type):
 			continue
 		

@@ -26,13 +26,13 @@ offset_bottom = 142.0
 
 [node name="Legend" type="RichTextLabel" parent="."]
 offset_left = -3.0
-offset_right = 428.0
-offset_bottom = 288.0
+offset_right = 453.0
+offset_bottom = 377.0
 theme_override_fonts/normal_font = ExtResource("4_gjwej")
 bbcode_enabled = true
 text = " [font_size=30]
- 👂🏻(L)  💞(E)
- 🦝(C)  🗣️(T)
+ 👂🏻[b](L)[/b]  💞[b](E)[/b]
+ 🦝[b](C)[/b]  🗣️[b](T)[/b]
 
  🗣️ ➕ 🦝 🟰 ❓
  👂🏻 ➕ 🗣️ 🟰 🗨️
